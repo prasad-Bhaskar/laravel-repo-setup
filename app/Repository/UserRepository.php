@@ -2,9 +2,10 @@
 namespace App\Repository;
 
 use App\Models\User;
-use App\RepositoryInterfaces\UserRepositoryInterface;
+use App\RepositoryInterfaces\IUserRepository;
+use Illuminate\Database\Eloquent\Collection;
 
-class UserRepository extends UserRepositoryInterface{
+class UserRepository implements IUserRepository{
     private User $user;
     public function __construct(User $user)
     {
@@ -15,23 +16,26 @@ class UserRepository extends UserRepositoryInterface{
     * @override
     *
     */
-    public function getAllUser(){
-        return $this->user->where('active', 1)->get();
+    public function getAllUser() :Collection
+    {
+        return $this->user->all();
     }
 
     /* 
     * @override
     *
     */
-    public function getUserById($id){
-
+    public function getUserById($id):User
+    {
+        return $this->user->where('id', $id)->firstOrFail();
     }
 
     /* 
     * @override
     *
     */
-    public function getUserByEmail($email){
-
+    public function getUserByEmail($email):User
+    {
+        return $this->user->where('id', $email)->firstOrFail();
     }    
 }
