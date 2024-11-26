@@ -2,22 +2,16 @@
 
 namespace Database\Factories;
 
-use App\Models\Admin;
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Admin>
  */
-class UserFactory extends Factory
+class AdminFactory extends Factory
 {
-    /* The name of the factory's corresponding model.
-    *
-    * @var string
-    */
-   protected $model = Admin::class;
-    /**
+     /**
      * The current password being used by the factory.
      */
     protected static ?string $password;
@@ -37,7 +31,6 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
         ];
     }
-
     /**
      * Indicate that the model's email address should be unverified.
      */

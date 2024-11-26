@@ -46,8 +46,8 @@ class AuthController extends Controller {
     }
 
     function returnJwtResponse($token){
-        $defaultTTL = config('jwt.ttl'); // Save the default TTL
-        config(['jwt.ttl' => config('jwt.refresh_ttl')]); // Set TTL for refresh token
+        $defaultTTL =  JWTAuth::factory()->getTTL(); // Save the default TTL
+        JWTAuth::factory()->setTTL(config('jwt.refresh_ttl')); // Set TTL for refresh token
         $user = auth()->user();
        $data = [
             'user' => User::with('userType')->findOrFail($user->id),
@@ -58,7 +58,7 @@ class AuthController extends Controller {
                 'refresh_token_expires' => config('jwt.refresh_ttl') * 60,
             ]
         ];
-        config(['jwt.ttl' => $defaultTTL]);
+        JWTAuth::factory()->setTTL($defaultTTL);
         return $data;
     }
 

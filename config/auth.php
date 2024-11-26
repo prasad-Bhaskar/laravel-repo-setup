@@ -45,6 +45,11 @@ return [
             'driver' => 'jwt', // Use 'jwt' if you are using JWT authentication
             'provider' => 'users',
         ],
+
+        'admin' => [
+            'driver' => 'jwt', // Use 'jwt' if you are using JWT authentication
+            'provider' => 'admins',
+        ],
     ],
 
     /*
@@ -68,6 +73,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,  // Custom admin model
         ],
 
         // 'users' => [
