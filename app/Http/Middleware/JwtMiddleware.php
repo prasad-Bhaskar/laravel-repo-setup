@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Tymon\JWTAuth\Exceptions\JWTException;
 use Symfony\Component\HttpFoundation\Response;
 
 class JwtMiddleware
@@ -15,6 +17,6 @@ class JwtMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+      return $next($request);      
     }
 }

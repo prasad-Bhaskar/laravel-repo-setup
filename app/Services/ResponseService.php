@@ -249,7 +249,7 @@ class ResponseService extends Response {
         return response()->json($responseData, $this::HTTP_NETWORK_AUTHENTICATION_REQUIRED);
     }
 
-    private function dataFormat(string $message, $data, int $status){
-        return array(['message' => $message, 'data'=>$data, 'status' => $status]);
+    private function dataFormat(string $message, $data, int $status): array{
+        return ['message' => $message, 'data'=>$data, 'status' => $status];
     }
 }
